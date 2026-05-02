@@ -26,13 +26,14 @@ public class JobApplication {
     @Column(nullable = false)
     private String jobTitle;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.APPLIED;
+    private Status status = Status.Applied;
     private LocalDate appliedDate;
     private String notes;
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+
     public enum Status{
-        APPLIED, INTERVIEW,  OFFERED, REJECTED
+        Applied, Interview, Offered, Rejected
     }
 }
