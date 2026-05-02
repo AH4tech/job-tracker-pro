@@ -1,4 +1,4 @@
-package dto;
+package com.abul.job_tracker.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

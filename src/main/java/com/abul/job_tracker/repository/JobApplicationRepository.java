@@ -1,6 +1,6 @@
-package repository;
+package com.abul.job_tracker.repository;
 
-import model.JobApplication;
+import com.abul.job_tracker.model.JobApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,11 +1,10 @@
-package model;
+package com.abul.job_tracker.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.engine.spi.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

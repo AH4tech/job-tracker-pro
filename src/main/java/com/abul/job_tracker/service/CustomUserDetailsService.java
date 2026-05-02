@@ -1,13 +1,13 @@
-package service;
+package com.abul.job_tracker.service;
 
 import lombok.RequiredArgsConstructor;
-import model.User;
+import com.abul.job_tracker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.abul.job_tracker.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

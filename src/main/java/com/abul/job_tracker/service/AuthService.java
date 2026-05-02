@@ -1,15 +1,15 @@
-package service;
+package com.abul.job_tracker.service;
 
-import dto.AuthRequest;
-import dto.AuthResponse;
+import com.abul.job_tracker.dto.AuthRequest;
+import com.abul.job_tracker.dto.AuthResponse;
 import lombok.RequiredArgsConstructor;
-import model.User;
+import com.abul.job_tracker.model.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
-import security.JwtUtil;
+import com.abul.job_tracker.repository.UserRepository;
+import com.abul.job_tracker.security.JwtUtil;
 
 @Service
 @RequiredArgsConstructor

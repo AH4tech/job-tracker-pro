@@ -1,4 +1,4 @@
-package security;
+package com.abul.job_tracker.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

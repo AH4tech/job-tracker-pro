@@ -1,4 +1,4 @@
-package model;
+package com.abul.job_tracker.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
