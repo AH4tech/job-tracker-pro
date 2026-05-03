@@ -2,6 +2,8 @@ package com.abul.job_tracker.service;
 
 import com.abul.job_tracker.dto.AuthRequest;
 import com.abul.job_tracker.dto.AuthResponse;
+import com.abul.job_tracker.exception.EmailAlreadyExistsException;
+import com.abul.job_tracker.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import com.abul.job_tracker.model.User;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,7 +23,7 @@ public class AuthService {
 
     public AuthResponse register(AuthRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already Registered");
+            throw new EmailAlreadyExistsException("Email already Registered " +  request.getEmail());
         }
         User user = new User();
         user.setName(request.getName());
@@ -47,7 +49,7 @@ public class AuthService {
         );
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with email " + request.getEmail()));
         String token = jwtUtil.generateToken(user.getEmail());
         return new AuthResponse(
                 token,

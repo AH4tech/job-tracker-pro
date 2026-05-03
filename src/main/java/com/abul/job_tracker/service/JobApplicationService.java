@@ -2,6 +2,8 @@ package com.abul.job_tracker.service;
 
 import com.abul.job_tracker.dto.JobApplicationRequest;
 import com.abul.job_tracker.dto.JobApplicationResponse;
+import com.abul.job_tracker.exception.ResourceNotFoundException;
+import com.abul.job_tracker.exception.UnauthorizedException;
 import com.abul.job_tracker.model.JobApplication;
 import com.abul.job_tracker.model.User;
 import com.abul.job_tracker.repository.JobApplicationRepository;
@@ -20,7 +22,7 @@ public class JobApplicationService {
     private final UserRepository userRepository;
 
     private User getCurrentUser(String email) {
-        return userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("User not Found!"));
+        return userRepository.findByEmail(email).orElseThrow(()->new ResourceNotFoundException("User not Found!" + email));
 
     }
 
@@ -67,10 +69,10 @@ public class JobApplicationService {
     public JobApplicationResponse getJobById(Long id, String email){
         User user = getCurrentUser(email);
 
-        JobApplication job = jobRepository.findById(id).orElseThrow(()->new RuntimeException("Job not found!"));
+        JobApplication job = jobRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Job not found!" + id));
 
         if(!job.getUser().getId().equals(user.getId())){
-            throw new RuntimeException("Unauthorized!");
+            throw new UnauthorizedException("You can only access your own job applications!");
     }
         return toResponse(job);
     }
