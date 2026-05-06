@@ -26,14 +26,16 @@ public class JobApplication {
     @Column(nullable = false)
     private String jobTitle;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.Applied;
+    private Status status = Status.APPLIED;
     private LocalDate appliedDate;
+//    @Column(name = "notes") // Change to match your MySQL column name
     private String notes;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
 
     public enum Status{
-        Applied, Interview, Offered, Rejected
+        APPLIED, INTERVIEW, OFFERED, REJECTED
     }
 }

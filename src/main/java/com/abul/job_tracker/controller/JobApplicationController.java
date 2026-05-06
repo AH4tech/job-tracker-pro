@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/jobs")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class JobApplicationController {
 
     private final JobApplicationService jobService;
@@ -37,7 +38,7 @@ public class JobApplicationController {
         return ResponseEntity.ok(jobService.getJobById(id,getEmail(principal)));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<JobApplicationResponse> updateJob(@PathVariable Long id,
                                                             @RequestBody JobApplicationRequest request,
                                                             Principal principal){
